@@ -35,8 +35,8 @@ public class AlunoController {
     }
 
     @PostMapping("cadastrar")
-    public String salvar(String nome, Integer idade, Double peso, Double altura, Long turma){
-        Aluno a = new Aluno(nome, idade, peso, altura);
+    public String salvar(String nome, Integer idade, Boolean necessidadeEspecial, Boolean possuiLaudo, Integer codigoCid, Long turma){
+        Aluno a = new Aluno(nome, idade, necessidadeEspecial, possuiLaudo, codigoCid);
         if(turma != 0){
             Turma e = turmaRepo.getReferenceById(turma);
             a.setTurma(e);
@@ -60,7 +60,6 @@ public class AlunoController {
         mv.addObject("lista", lista);
         mv.setViewName("aluno/exibirTodos");
         return mv;
-
     }
 
     @DeleteMapping
@@ -71,12 +70,13 @@ public class AlunoController {
 
     @PutMapping("cadastrar")
     @Transactional
-    public String atualizarAluno(Long id, String nome, Integer idade, Double peso, Double altura, Long turma){
+    public String atualizarAluno(Long id, String nome, Integer idade, Boolean necessidadeEspecial, Boolean possuiLaudo, Integer codigoCid, Long turma){
         Aluno a = alunoRepo.getReferenceById(id);
         a.setNome(nome);
         a.setIdade(idade);
-        a.setPeso(peso);
-        a.setAltura(altura);
+        a.setNecessidadeEspecial(necessidadeEspecial);
+        a.setPossuiLaudo(possuiLaudo);
+        a.setCodigoCid(codigoCid);
         if(turma != 0){
             Turma e = turmaRepo.getReferenceById(turma);
             a.setTurma(e);

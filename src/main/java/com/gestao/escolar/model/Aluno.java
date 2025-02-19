@@ -10,32 +10,25 @@ public class Aluno {
     private Long id;
     private String nome;
     private Integer idade;
-    private Double peso;
-    private Double altura;
+    private Boolean necessidadeEspecial;
+    private Boolean possuiLaudo;
+    private Integer codigoCid;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="turma" )
     private Turma turma;
+
     public Aluno() {
     }
-    public Aluno(String nome, Integer idade, Double peso, Double altura) {
+
+    public Aluno(String nome, Integer idade, Boolean necessidadeEspecial, Boolean possuiLaudo, Integer codigoCid) {
         this.nome = nome;
         this.idade = idade;
-        this.peso = peso;
-        this.altura = altura;
+        this.necessidadeEspecial = necessidadeEspecial;
+        this.possuiLaudo = possuiLaudo;
+        this.codigoCid = codigoCid;
     }
-    
-    public Aluno(Double peso, Double altura) {
-        this.peso = peso;
-        this.altura = altura;
-    }
-    public Double calcIMC(){
-        Double imc = null;
-        if(peso != null && altura != null){
-            imc = peso/(altura*altura);
-        }
-        return imc;
-    }
+
     public Long getId() {
         return id;
     }
@@ -54,18 +47,31 @@ public class Aluno {
     public void setIdade(Integer idade) {
         this.idade = idade;
     }
-    public Double getPeso() {
-        return peso;
+
+    public Boolean getNecessidadeEspecial() {
+        return necessidadeEspecial;
     }
-    public void setPeso(Double peso) {
-        this.peso = peso;
+
+    public void setNecessidadeEspecial(Boolean necessidadeEspecial) {
+        this.necessidadeEspecial = necessidadeEspecial;
     }
-    public Double getAltura() {
-        return altura;
+
+    public Boolean getPossuiLaudo() {
+        return possuiLaudo;
     }
-    public void setAltura(Double altura) {
-        this.altura = altura;
+
+    public void setPossuiLaudo(Boolean possuiLaudo) {
+        this.possuiLaudo = possuiLaudo;
     }
+
+    public Integer getCodigoCid() {
+        return codigoCid;
+    }
+
+    public void setCodigoCid(Integer codigoCid) {
+        this.codigoCid = codigoCid;
+    }
+
     public Turma getTurma() {
         return turma;
     }

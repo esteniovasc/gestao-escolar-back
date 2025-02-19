@@ -2,8 +2,10 @@ CREATE TABLE aluno(
     id bigint not null auto_increment,
     nome varchar(150),
     idade int,
-    peso float,
-    altura float,
+    necessidade_especial tinyint(1),
+    possui_laudo tinyint(1),
+    codigo_cid int,
+    turma bigint,
     PRIMARY KEY(id)
 );
 
@@ -24,7 +26,5 @@ CREATE TABLE turma(
     local varchar(150),
     PRIMARY KEY(id)
 );
-
-ALTER TABLE aluno ADD COLUMN turma bigint;
 
 ALTER TABLE aluno ADD CONSTRAINT fk_turma FOREIGN KEY(turma) REFERENCES turma(id);
