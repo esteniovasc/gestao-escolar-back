@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Todas as Turmas</title>
+</head>
+<body>
+    <a href="/turma/cadastrar">Cadastrar novo</a>
+    <table>
+        <thead>
+            <th>NOME</th>
+            <th>LOCAL</th>
+            <th>AÇÕES</th>
+        </thead>
+        <tbody>
+            <tr th:each="turma : ${lista}">
+                <td th:text="${turma.getNome()}"></td>
+                <td th:text="${turma.getLocal()}"></td>
+                <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="id" th:value="${turma.getId()}">
+                        <input type="submit" value="Deletar">
+                    </form>
+
+                    <a th:href="@{/turma/cadastrar?id={id}(id=${turma.getId()})}">Editar</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno</title>
+</head>
+<body>
+    <h1>Digite os dados do aluno:</h1>
+    <form action="" method="post">
+        <input th:if="${aluno != null}" type="hidden" name="_method" value="put">
+        <input type="hidden" name="id" th:value="${aluno?.id}">
+
+        Nome: <input name="nome" th:value="${aluno?.getNome()}"> <br>
+        Idade: <input name="idade" th:value="${aluno?.getIdade()}"> <br>
+        Peso: <input name="peso" th:value="${aluno?.getPeso()}"> <br>
+        Altura: <input name="altura" th:value="${aluno?.getAltura()}"> <br>
+
+        <label>Turma:</label>
+        <select name ="turma">
+        <option th:value="0"> SEM EQUIPE </option>
+        <option th:each="turma: ${turmas}"
+                th:selected="${aluno?.getTurma()?.getId() == turma.getId()}"
+                th:value="${turma.getId()}" th:text="${turma.getNome()}"></option>
+        </select>
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
+</html>

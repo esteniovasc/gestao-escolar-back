@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluno</title>
+</head>
+<body>
+    <h1>Digite os dados do turma:</h1>
+    <form action="" method="post">
+        <input th:if="${turma != null}" type="hidden" name="_method" value="put">
+        <input type="hidden" name="id" th:value="${turma?.getId()}">
+
+        Nome: <input name="nome" th:value="${turma?.getNome()}"> <br>
+        Turma: <input name="local" th:value="${turma?.getLocal()}"> <br>
+
+        <label>Membros da turma:</label>
+        <div th:each="aluno : ${alunos}">
+            <input type="checkbox" th:checked="${aluno.getTurma() != null}"
+                    th:value="${aluno.getId()}" name = "membros"
+                    th:text="${aluno.getNome()}"> 
+        </div>
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
+</html>
