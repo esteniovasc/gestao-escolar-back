@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br"
       xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Seja bem vindo</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login | GE</title>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="/styles/style.css" media="all">
+    </head>
+    <body>
+        
+        <div class="headerLogin">
+            <img src="/assets/logo-GE.png">
+            <h2>Central de Login</h2>
+        </div>
 
-<h1>Insira seus dados</h1>
+        <div class="divFormStyle">
+            <h3>Digite suas credenciais:</h3>
 
-<div th:if="${param.error}">
-    Senha ou usuário inválido.
-</div>
-<div th:if="${param.logout}">
-    Você foi deslogado.
-</div>
-<a href="/usuario/cadastro">Novo Usuário</a>
-<form th:action="@{/login}" method="post">
-    <div>
-        <input type="text" name="username" placeholder="Usuário"/>
-    </div>
-    <div>
-        <input type="password" name="password" placeholder="Senha"/>
-    </div>
-    <input type="submit" value="Log in" />
-</form>
+            <form th:action="@{/login}" method="post" class="formStyle">
+                <div>
+                    <input type="text" name="username" placeholder="CPF, matrícula ou e-mail"/>
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="Senha"/>
+                </div>
+                <input type="submit" value="Entrar" />
+            </form>
 
-</body>
+            <div th:if="${param.error}" class="error">
+                ⚠️ Senha ou usuário inválido
+            </div>
+            <div th:if="${param.logout}" class="alert">
+                ⚠️ Você foi deslogado
+            </div>
+
+            <a href="/usuario/cadastro">Cadastrar um novo usuário<img src="/assets/link-external.svg" style="height: 2vh"></a>
+        </div>
+
+
+    </body>
 </html>

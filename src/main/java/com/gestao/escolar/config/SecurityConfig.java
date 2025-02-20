@@ -42,6 +42,7 @@ public class SecurityConfig {
                 (authorize) -> authorize
                         .requestMatchers("/usuario/cadastro").permitAll()
                         .requestMatchers("/usuario/salvar").permitAll()
+                        .requestMatchers("/styles/**", "/assets/**").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 form -> form
