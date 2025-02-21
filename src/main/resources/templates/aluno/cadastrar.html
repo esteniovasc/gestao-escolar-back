@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluno</title>
+    <title>Cadastro de Aluno</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/styles/alunocadastrar.css" media="all">
 </head>
 <body>
-    <h1>Digite os dados do aluno:</h1>
+    <h2>Cadastro de novo aluno:</h2>
     <form action="" method="post">
         <input th:if="${aluno != null}" type="hidden" name="_method" value="put">
         <input type="hidden" name="id" th:value="${aluno?.id}">
 
-        Nome: <input name="nome" th:value="${aluno?.getNome()}"> <br>
+        Nome Completo: <input name="nome" th:value="${aluno?.getNome()}"> <br>
         Idade: <input name="idade" th:value="${aluno?.getIdade()}"> <br>
-        Peso: <input name="peso" th:value="${aluno?.getPeso()}"> <br>
-        Altura: <input name="altura" th:value="${aluno?.getAltura()}"> <br>
+
+        <label>Necessidade Especial:</label>
+        <input type="radio" name="necessidadeEspecial" value="true" th:checked="${aluno?.getNecessidadeEspecial() == true}"> Sim
+        <input type="radio" name="necessidadeEspecial" value="false" th:checked="${aluno?.getNecessidadeEspecial() == false}"> Não <br>
+
+        <label>Possui Laudo?</label>
+        <input type="radio" name="possuiLaudo" value="true" th:checked="${aluno?.getPossuiLaudo() == true}"> Sim
+        <input type="radio" name="possuiLaudo" value="false" th:checked="${aluno?.getPossuiLaudo() == false}"> Não <br>
+
+        Código CID: <input name="codigoCid" th:value="${aluno?.getCodigoCid()}"> <br>
 
         <label>Turma:</label>
         <select name ="turma">
@@ -24,7 +34,7 @@
                 th:value="${turma.getId()}" th:text="${turma.getNome()}"></option>
         </select>
 
-        <input type="submit" value="enviar">
+        <input type="submit" value="Enviar">
     </form>
 </body>
 </html>

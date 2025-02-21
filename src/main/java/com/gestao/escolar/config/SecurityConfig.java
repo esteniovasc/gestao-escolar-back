@@ -40,8 +40,9 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable).
                 authorizeHttpRequests(
                 (authorize) -> authorize
-                        .requestMatchers("/usuario/cadastro").permitAll()
-                        .requestMatchers("/usuario/salvar").permitAll()
+                        .requestMatchers("/usuario/cadastro").hasAnyRole("ADMIN")
+                        .requestMatchers("/usuario/salvar").hasAnyRole("ADMIN")
+                        .requestMatchers("/aluno/cadastrar").hasAnyRole("ADMIN", "PROFESSOR")
                         .requestMatchers("/styles/**", "/assets/**").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(

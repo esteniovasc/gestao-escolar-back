@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br"
       xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibir Todos os alunos</title>
-</head>
-<body>
-    <a href="/aluno/cadastrar">Cadastrar novo</a>
-    <table>
-        <thead>
-            <th>NOME</th>
-            <th>IDADE</th>
-            <th>PESO</th>
-            <th>ALTURA</th>
-            <th>AÇÕES</th>
-        </thead>
-        <tbody>
-            <tr th:each="aluno : ${lista}">
-                <td th:text="${aluno.getNome()}"></td>
-                <td th:text="${aluno.getIdade()}"></td>
-                <td th:text="${aluno.getPeso()}"></td>
-                <td th:text="${aluno.getAltura()}"></td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <input type="hidden" name="id" th:value="${aluno.getId()}">
-                        <input type="submit" value="Deletar">
-                    </form>
 
-                    <a th:href="@{/aluno/cadastrar?id={id}(id=${aluno.getId()})}">Editar</a>
-                </td>
-            </tr>
-        </tbody>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de alunos</title>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="/styles/alunoview.css" media="all">
+    </head>
 
-    </table>
-</body>
+    <body>
+        <h2>Lista de todos os alunos da escola</h2>
+        <table>
+            <thead>
+                <th>Nome Completo</th>
+                <th>Idade</th>
+                <th>Possui necessidade especial?</th>
+                <th>Possui laudo?</th>
+                <th>Codigo CID</th>
+                <th>AÇÕES</th>
+            </thead>
+            <tbody>
+                <tr th:each="aluno : ${lista}">
+                    <td th:text="${aluno.getNome()}"></td>
+                    <td th:text="${aluno.getIdade()}"></td>
+                    <td th:text="${aluno.getNecessidadeEspecial()}"></td>
+                    <td th:text="${aluno.getPossuiLaudo()}"></td>
+                    <td th:text="${aluno.getCodigoCid}" ></td>
+                    <td>
+                        <a th:href="@{/aluno/cadastrar?id={id}(id=${aluno.getId()})}">Editar</a>
+
+                        <form action="" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${aluno.getId()}">
+                            <input type="submit" value="Deletar">
+                        </form>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="navegacao">
+            <a href="/aluno/cadastrar">Cadastrar novo aluno</a>
+            <a href="/turma/cadastrar">Cadastrar Turma</a>
+        </div>
+
+    </body>
 </html>

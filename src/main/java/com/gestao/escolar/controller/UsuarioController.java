@@ -1,5 +1,6 @@
 package com.gestao.escolar.controller;
 
+import com.gestao.escolar.model.usuario.Role;
 import com.gestao.escolar.model.usuario.Usuario;
 import com.gestao.escolar.model.usuario.UsuarioRepository;
 import com.gestao.escolar.model.usuario.UsuarioRequestDTO;
@@ -31,7 +32,8 @@ public class UsuarioController {
     public String guardarUsuario(UsuarioRequestDTO dados){
         System.out.println("Salvando " + dados);
         String password = passwordEncoder.encode(dados.password());
-        Usuario u = new Usuario(dados.username(), dados.email(), password);
+        Role role = Role.valueOf(dados.role().toUpperCase());
+        Usuario u = new Usuario(dados.username(), dados.email(), password, role);
         usuarioRepo.save(u);
         return "redirect:/login";
     }

@@ -16,13 +16,14 @@ public class Usuario {
     private String password;
     @Column(columnDefinition = "nome_completo",nullable = false, length = 64)
     private String nomeCompleto;
-    @Column(nullable = false, length = 64)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String email, String password, String nomeCompleto, String role) {
+    public Usuario(Long id, String username, String email, String password, String nomeCompleto, Role role) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -31,12 +32,12 @@ public class Usuario {
         this.role = role;
     }
 
-    public Usuario(String username, String email, String password) {
+    public Usuario(String username, String email, String password, Role role) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.nomeCompleto = "";
-        this.role = "user";
+        this.role = role;
     }
 
     public Long getId() {
@@ -79,11 +80,11 @@ public class Usuario {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

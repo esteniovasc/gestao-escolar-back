@@ -1,0 +1,89 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    transition: all ease 0.3s;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    padding: 2vh;
+    gap: 5vh;
+    color: #000000;
+}
+
+table {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    background-color: rgba(215, 215, 215, 0.6);
+    border-radius: 1vh;
+    overflow: hidden;
+}
+
+thead {
+    background-color: rgb(180 180 180);
+    text-align: left;
+}
+
+thead th {
+    padding: 1.5vh;
+    font-weight: 800;
+}
+
+tbody tr {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+tbody td {
+    padding: 1vh;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+input[type="submit"] {
+    padding: 1vh 2vh;
+    background-color: #96300f;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    font-size: medium;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #7a240c;
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    background-color: #38761d;
+    padding: 1vh 2vh;
+    border-radius: 1vh;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+    margin-bottom: 1vh;
+}
+
+a:hover {
+    background-color: #2e6317;
+    text-decoration: underline;
+}

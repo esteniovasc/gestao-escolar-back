@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br"
-      xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibir Todas as Turmas</title>
-</head>
-<body>
-    <a href="/turma/cadastrar">Cadastrar novo</a>
-    <table>
-        <thead>
-            <th>NOME</th>
-            <th>LOCAL</th>
-            <th>AÇÕES</th>
-        </thead>
-        <tbody>
-            <tr th:each="turma : ${lista}">
-                <td th:text="${turma.getNome()}"></td>
-                <td th:text="${turma.getLocal()}"></td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <input type="hidden" name="id" th:value="${turma.getId()}">
-                        <input type="submit" value="Deletar">
-                    </form>
+          xmlns:th="http://thymeleaf.org">
 
-                    <a th:href="@{/turma/cadastrar?id={id}(id=${turma.getId()})}">Editar</a>
-                </td>
-            </tr>
-        </tbody>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exibir Todas as Turmas</title>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="/styles/turmaview.css" media="all">
+    </head>
 
-    </table>
-</body>
+    <body>
+        <h2>Lista de todas as turmas da escola</h2>
+        <table>
+            <thead>
+                <th>Nome da Turma</th>
+                <th>Sala/Turno/Descrição:</th>
+                <th>AÇÕES</th>
+            </thead>
+            <tbody>
+                <tr th:each="turma : ${lista}">
+                    <td th:text="${turma.getNome()}"></td>
+                    <td th:text="${turma.getLocal()}"></td>
+                    <td>
+
+                        <a th:href="@{/turma/cadastrar?id={id}(id=${turma.getId()})}">Editar</a>
+
+                        <form action="" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${turma.getId()}">
+                            <input type="submit" value="Deletar">
+                        </form>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="navegacao">
+            <a href="/aluno/cadastrar">Cadastrar novo aluno</a>
+            <a href="/turma/cadastrar">Cadastrar novo</a>
+        </div>
+
+    </body>
 </html>

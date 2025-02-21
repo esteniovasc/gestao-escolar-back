@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 ::-webkit-scrollbar {
-    background-color: #00ddff;
+    background-color: #bdbdbd;
     border-radius: 5px;
     width: 15px;
 }
@@ -71,20 +71,23 @@ html,body {
 }
 
 .divFormStyle a {
-    text-decoration: underline;
     font-weight: 600;
     color: white;
     gap: 1vh;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    margin-bottom: 2vh;
+}
+
+.divFormStyle a:hover {
+    text-decoration: underline;
 }
 
 .divFormStyle a img {
     height: 2vh;
     filter: invert(1);
 }
-
-
 
 .formStyle {
     display: flex;
