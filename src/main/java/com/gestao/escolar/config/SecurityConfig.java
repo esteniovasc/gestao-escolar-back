@@ -43,15 +43,19 @@ public class SecurityConfig {
                         .requestMatchers("/usuario/cadastro").hasAnyRole("ADMIN")
                         .requestMatchers("/usuario/salvar").hasAnyRole("ADMIN")
                         .requestMatchers("/aluno/cadastrar").hasAnyRole("ADMIN", "PROFESSOR")
+                        .requestMatchers("/turma/cadastrar").hasAnyRole("ADMIN", "PROFESSOR")
                         .requestMatchers("/styles/**", "/assets/**").permitAll()
                         .anyRequest().authenticated()
         ).formLogin(
                 form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/aluno")
+                        .defaultSuccessUrl("/home", true)
                         .permitAll()
-        );
+        ).exceptionHandling((exceptionHandling) ->
+                exceptionHandling
+                        .accessDeniedPage("/error/403")
+        );;
         return http.build();
     }
 }

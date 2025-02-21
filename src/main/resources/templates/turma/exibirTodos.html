@@ -16,12 +16,20 @@
             <thead>
                 <th>Nome da Turma</th>
                 <th>Sala/Turno/Descrição:</th>
+                <th>Alunos</th>
                 <th>AÇÕES</th>
             </thead>
             <tbody>
                 <tr th:each="turma : ${lista}">
                     <td th:text="${turma.getNome()}"></td>
                     <td th:text="${turma.getLocal()}"></td>
+                    <td>
+                        <ul>
+                            <li th:each="aluno : ${turma.getAlunos()}">
+                                <span th:text="${aluno.getNome()}"></span>
+                            </li>
+                        </ul>
+                    </td>
                     <td>
 
                         <a th:href="@{/turma/cadastrar?id={id}(id=${turma.getId()})}">Editar</a>
@@ -39,6 +47,7 @@
         </table>
 
         <div class="navegacao">
+            <a href="/home" style="background-color: #00398a;">Voltar para o inicio</a>
             <a href="/aluno/cadastrar">Cadastrar novo aluno</a>
             <a href="/turma/cadastrar">Cadastrar novo</a>
         </div>

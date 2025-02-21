@@ -28,6 +28,11 @@ public class TurmaController {
     public ModelAndView loadTurmaList(){
         ModelAndView mv = new ModelAndView();
         List<Turma> turmas = turmaRepo.findAll();
+
+        for (Turma turma : turmas) {
+            turma.setAlunos(alunoRepo.getAlunosPorTurma(turma)); // Certifique-se de que essa função retorne os alunos corretos
+        }
+
         mv.addObject("lista", turmas);
         mv.setViewName("turma/exibirTodos");
         return mv;

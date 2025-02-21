@@ -86,7 +86,6 @@ html,body {
 
 .divFormStyle a img {
     height: 2vh;
-    filter: invert(1);
 }
 
 .formStyle {

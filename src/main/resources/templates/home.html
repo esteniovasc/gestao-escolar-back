@@ -5,41 +5,73 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login | GE</title>
+        <title>Página inicial | GE</title>
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
         <link rel="stylesheet" href="/styles/home.css" media="all">
     </head>
 
-    <body class="bodyLogin">
-        
-        <div class="headerLogin">
-            <img src="/assets/logo-GE.png">
-            <h2>Central de Login</h2>
+    <body>
+
+        <header class="headerDashboard">
+            <div>
+                <img src="/assets/menu.png" alt="Menu Lateral" style="height: 7vh"/>
+                <h1>GE</h1>
+            </div>
+            <div>
+                <a href='/help'><img src="/assets/help.svg" alt="Ajuda" style="height: 5vh" /></a>
+                <img src="/assets/sync_status.gif" style="height: 10vh">
+                <a href="/userprofile"><img src="/assets/user.svg" alt="Foto do perfil do usuário logado" style="height: 5vh"/></a>
+                <a href="/logout"><img src="/assets/logout-white.svg" alt="Sair" style="height: 4vh"/></a>
+            </div>
+        </header>
+
+        <div class="navigation">
+            <img src="/assets/home.svg" style="height: 3vh">
+            &nbsp; /
         </div>
 
-        <div class="divFormStyle">
-            <h3>Digite suas credenciais:</h3>
-
-            <form th:action="@{/login}" method="post" class="formStyle">
-                <div>
-                    <input type="text" name="username" placeholder="CPF, matrícula ou e-mail"/>
-                </div>
-                <div>
-                    <input type="password" name="password" placeholder="Senha"/>
-                </div>
-                <input type="submit" value="Entrar" />
-            </form>
-
-            <div th:if="${param.error}" class="error">
-                ⚠️ Senha ou usuário inválido
-            </div>
-            <div th:if="${param.logout}" class="alert">
-                ⚠️ Você foi deslogado
-            </div>
-
-            <a href="/usuario/cadastro">Cadastrar um novo usuário<img src="/assets/link-external.svg" style="height: 2vh"></a>
+        <div class="labelInfo">
+            <h4>Olá, </h4>
+            &nbsp;
+            <label th:text="${userDetails.getUsername()}"></label><br>
         </div>
 
+        <div class="card">
+
+            <div>
+
+            </div>
+            <hr>
+            <h4></h4>
+        </div>
+
+        <nav class="navigationBar">
+
+            <a href="/usuario/cadastro">
+                <div class="buttonNavigationBar">
+                    <img src="/assets/add-user.svg" alt="Calendário" class="iconsNavBar"/>
+                </div>
+            </a>
+
+            <a href="/home">
+                <div class="buttonNavigationBar">
+                    <img src="/assets/home-white.svg" alt="Calendário" class="iconsNavBar"/>
+                </div>
+            </a>
+
+            <a href="/aluno">
+                <div class="buttonNavigationBar">
+                    <img src="/assets/user-info.svg" alt="Calendário" class="iconsNavBar"/>
+                </div>
+            </a>
+
+            <a href="/turma">
+                <div class="buttonNavigationBar">
+                    <img src="/assets/classlist.svg" alt="Calendário" class="iconsNavBar"/>
+                </div>
+            </a>
+
+        </nav>
 
     </body>
 </html>

@@ -35,7 +35,7 @@ public class UsuarioController {
         Role role = Role.valueOf(dados.role().toUpperCase());
         Usuario u = new Usuario(dados.username(), dados.email(), password, role);
         usuarioRepo.save(u);
-        return "redirect:/login";
+        return "redirect:/home";
     }
 
 }
